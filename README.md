@@ -24,7 +24,7 @@ A standalone packaging, "[http://code.google.com/p/janalyse-series/downloads/det
 
 ##Examples##
 
-###Google stock quote trend (just download "jaseries.jar" executable jar to test this simple script)###
+###Google stock quote trend###
 ```scala
 #!/bin/sh
 exec java -jar jaseries.jar -nocompdaemon -usejavacp -savecompiled "$0" "$@"
