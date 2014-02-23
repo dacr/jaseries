@@ -1,0 +1,120 @@
+
+---------------------------------------------------------------------------
+2013-10-30 / zorglub / java version "1.7.0_40" / OS X 10.9 2.3Ghz Intel Core i7 / 8Go 1600MHz DDR3
+
+[info] PerfSeriesTest:
+[info] - some performances test
+[info]   + Build duration : 7ms - size=1000 
+[info]   + compute duration : 142ms - size=1000 
+[info]   + composition duration : 120ms - size=1000 
+[info]   + oneBig composition duration : 263ms - size=1000 
+[info] - more performances test - 1000000 cells
+[info]   + With Series[CalcCell] :Duration : avg=210ms min=172ms max=268ms all=Vector(268ms, 191ms, 172ms) 
+[info]   + With Series[StatCell] :Duration : avg=220ms min=198ms max=257ms all=Vector(257ms, 198ms, 206ms) 
+[info]   + With Series[AddCell] : Duration : avg=194ms min=176ms max=229ms all=Vector(229ms, 176ms, 179ms) 
+[info]   + With Series[CountCell] : Duration : avg=199ms min=176ms max=242ms all=Vector(242ms, 176ms, 181ms) 
+[info] - basic performance test : 1000000 cells added, period=1
+[info]   + Reference duration (using Series)      : 122ms - reached size=1000000 
+[info]   + Reference duration (using Vector)      : 64ms - reached size=1000000 
+[info] - prepend test
+[info]   + Reference duration (using SERIES)            : 4ms - reached size=1250 (immutable) 
+[info]   + Reference duration (using SERIES)            : 7ms - reached size=2500 (immutable) 
+[info]   + Reference duration (using SERIES)            : 11ms - reached size=5000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 19ms - reached size=10000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 17ms - reached size=20000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 8ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 13ms - reached size=80000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 21ms - reached size=160000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 42ms - reached size=320000 (immutable) 
+[info]   + Reference duration (using scala VECTOR)      : 31ms - reached size=320000 (immutable) 
+[info]   + Reference duration (using scala ARRAYBUFFER) : 10s34ms - reached size=320000 (but mutable, so not fair) 
+[info]   + Reference duration (using java ARRAYLIST)    : 9s996ms - reached size=320000 (but mutable, so not fair) 
+[info] - middle insertion test
+[info]   + Reference duration (using SERIES)            : 65ms - reached size=1250 (immutable) 
+[info]   + Reference duration (using SERIES)            : 22ms - reached size=2500 (immutable) 
+[info]   + Reference duration (using SERIES)            : 92ms - reached size=5000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 405ms - reached size=10000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 1s404ms - reached size=20000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 4s940ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using scala VECTOR)      : 16s327ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using scala ARRAYBUFFER) : 66ms - reached size=40000 (but mutable, so not fair) 
+[info]   + Reference duration (using java ARRAYLIST)    : 58ms - reached size=40000 (but mutable, so not fair) 
+[info] - append test
+[info]   + Reference duration (using SERIES)            : 0ms - reached size=1250 (immutable) 
+[info]   + Reference duration (using SERIES)            : 2ms - reached size=2500 (immutable) 
+[info]   + Reference duration (using SERIES)            : 2ms - reached size=5000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 5ms - reached size=10000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 6ms - reached size=20000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 9ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 20ms - reached size=80000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 47ms - reached size=160000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 84ms - reached size=320000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 167ms - reached size=640000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 323ms - reached size=1280000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 460ms - reached size=2560000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 1s105ms - reached size=5120000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 2s550ms - reached size=10240000 (immutable) 
+[info]   + Reference duration (using scala VECTOR)      : 2s466ms - reached size=10240000 (immutable) 
+[info]   + Reference duration (using scala ARRAYBUFFER) : 3s236ms - reached size=10240000 (but mutable, so not fair) 
+[info]   + Reference duration (using java ARRAYLIST)    : 3s330ms - reached size=10240000 (but mutable, so not fair) 
+[info] - csv read perf test
+[info]   + csv parse duration : 3s441ms - size=500000 
+
+
+---------------------------------------------------------------------------
+2013-10-14 / zorglub
+info] PerfSeriesTest:
+[info] - some performances test
+[info]   + Build duration : 10ms - size=1000 
+[info]   + compute duration : 277ms - size=1000 
+[info]   + composition duration : 298ms - size=1000 
+[info]   + oneBig composition duration : 824ms - size=1000 
+[info] - more performances test - 1000000 cells
+[info]   + With Series[CalcCell] :Duration : avg=377ms min=227ms max=643ms all=Vector(643ms, 227ms, 263ms) 
+[info]   + With Series[StatCell] :Duration : avg=250ms min=205ms max=339ms all=Vector(339ms, 205ms, 206ms) 
+[info]   + With Series[AddCell] : Duration : avg=201ms min=189ms max=219ms all=Vector(219ms, 196ms, 189ms) 
+[info]   + With Series[CountCell] : Duration : avg=200ms min=191ms max=218ms all=Vector(218ms, 191ms, 192ms) 
+[info] - basic performance test : 1000000 cells added, period=1
+[info]   + Reference duration (using Series)      : 118ms - reached size=1000000 
+[info]   + Reference duration (using Vector)      : 320ms - reached size=1000000 
+[info] - prepend test
+[info]   + Reference duration (using SERIES)      : 1ms - reached size=1250 
+[info]   + Reference duration (using SERIES)      : 2ms - reached size=2500 
+[info]   + Reference duration (using SERIES)      : 2ms - reached size=5000 
+[info]   + Reference duration (using SERIES)      : 4ms - reached size=10000 
+[info]   + Reference duration (using SERIES)      : 4ms - reached size=20000 
+[info]   + Reference duration (using SERIES)      : 4ms - reached size=40000 
+[info]   + Reference duration (using SERIES)      : 10ms - reached size=80000 
+[info]   + Reference duration (using SERIES)      : 26ms - reached size=160000 
+[info]   + Reference duration (using SERIES)      : 49ms - reached size=320000 
+[info]   + Reference duration (using SERIES)      : 90ms - reached size=640000 
+[info]   + Reference duration (using SERIES)      : 209ms - reached size=1280000 
+[info]   + Reference duration (using SERIES)      : 583ms - reached size=2560000 
+[info]   + Reference duration (using SERIES)      : 1s888ms - reached size=5120000 
+[info]   + Reference duration (using SERIES)      : 4s650ms - reached size=10240000 
+[info]   + Reference duration (using VECTOR)      : 5s626ms - reached size=10240000 
+[info] - middle insertion test
+[info]   + Reference duration (using SERIES)      : 6ms - reached size=1250 
+[info]   + Reference duration (using SERIES)      : 117ms - reached size=2500 
+[info]   + Reference duration (using SERIES)      : 96ms - reached size=5000 
+[info]   + Reference duration (using SERIES)      : 331ms - reached size=10000 
+[info]   + Reference duration (using SERIES)      : 1s233ms - reached size=20000 
+[info]   + Reference duration (using SERIES)      : 4s777ms - reached size=40000 
+[info]   + Reference duration (using VECTOR)      : 17s148ms - reached size=40000 
+[info] - append test
+[info]   + Reference duration (using SERIES)      : 0ms - reached size=1250 
+[info]   + Reference duration (using SERIES)      : 1ms - reached size=2500 
+[info]   + Reference duration (using SERIES)      : 2ms - reached size=5000 
+[info]   + Reference duration (using SERIES)      : 3ms - reached size=10000 
+[info]   + Reference duration (using SERIES)      : 4ms - reached size=20000 
+[info]   + Reference duration (using SERIES)      : 5ms - reached size=40000 
+[info]   + Reference duration (using SERIES)      : 20ms - reached size=80000 
+[info]   + Reference duration (using SERIES)      : 49ms - reached size=160000 
+[info]   + Reference duration (using SERIES)      : 98ms - reached size=320000 
+[info]   + Reference duration (using SERIES)      : 210ms - reached size=640000 
+[info]   + Reference duration (using SERIES)      : 397ms - reached size=1280000 
+[info]   + Reference duration (using SERIES)      : 680ms - reached size=2560000 
+[info]   + Reference duration (using SERIES)      : 1s322ms - reached size=5120000 
+[info]   + Reference duration (using SERIES)      : 4s757ms - reached size=10240000 
+[info]   + Reference duration (using VECTOR)      : 6s105ms - reached size=10240000 
+---------------------------------------------------------------------------

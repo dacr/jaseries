@@ -1,0 +1,167 @@
+------------------------------------------------------------------
+JASERIES (JANALYSE-SERIES) - RELEASES NOTES
+Crosson David - crosson.david@gmail.com
+------------------------------------------------------------------
+
+ - TODO : namesFromFile, namesFromString, namesFromURL must detect CSV pivot format 
+    (and then getting series names may be quite slower)
+ - TODO : Source.fromFile doesn't close the file descriptor...
+    (check https://github.com/jsuereth/scala-arm)
+ - TODO : make filtering works as it should !
+ - TODO : add ++ 
+
+------------------------------------------------------------------
+1.6.1 - 2012-xx-yy
+ - cell insertion is now 2.5 faster than before, and 2.5 faster than for Vector
+   (using raw builder instead)
+ - Performance test enhancements
+ - csv parsing performance test added
+ - new rename and realias methods which take renamer or realiaser functions as arguments
+   in order to build a new name based on the previous one.
+ - TimeRange class added
+ - timeRange method added to series
+ - new methods in CSV2Series : 
+      timeRangesFromFile, timeRangesFromURL, timeRangesFromString,
+      realiasFromName
+ - scala             2.10.3
+ - jfreechart        1.0.15
+ - sbteclipse-plugin 2.3.0
+ - sbt-assembly      0.10.0
+ - sbt               0.13.0
+ - scalatest         1.9.2
+ - cellBuilder def to val in cell objects
+ - more cells order tests
+ 
+------------------------------------------------------------------
+1.6.0 - 2012-05-13
+ - source files enhancements
+ - various enhancements
+ - now statistics implementation is fully decoupled from cell types.
+ - introducing a new abstract cell with a default statistics provider implementation
+   (CellWithDefaultStatisticsProvider)
+ - default ordering for all cell types.
+ - Series.combine fixes :
+   + duplicates times problem 
+   + time ordering problem in some situations
+   + more robust searchFirstGreaterOrEqual
+ - StackedChart now internally "align" series times, using 0 as a default value for missing cells
+ - add new test 'Ordering test' to fix a time order problem while merging series
+ - sbt eclipse 2.1.2
+ - commons-compress 1.5
+ - scala-logging 1.0.1 
+ - sbt assembly 0.8.8
+ - scala 2.10.1
+
+------------------------------------------------------------------
+1.5.0 - 2012-01-25
+ 
+ - build.sbt cleanup
+ - Refactoring (GenericChart, ChartFactory, ...)
+ - Refactoring achieved to make series a true scala collection !
+ - Very high performance jump
+ - Cells hierarchy cleanup 
+   => now using things correctly, good implicits usage. (for both cells & series)
+ - Code cleanup
+ - Removed compiler warnings
+ 
+------------------------------------------------------------------
+1.4.0 - 2012-11-15
+ - csv features moved to fr.janalyse.series.csv new package
+   In your code, if you're using either :
+     - import jaseries._
+     - import fr.janalyse.series._
+   Then the change is totally transparent ; no impact.
+ - moving csv test cases into a dedicated test source file : CSVTest.scala
+ - svn cleanup & svnignore.txt file added, and taken into account with this command :
+   "svn propset svn:ignore -F svnignore.txt . scripts onejar project src/main src/test/ onejar/project/"
+ - CSV2Series now provides method to quickly get just series names contained inside a CSV file
+   + CSV2Series object : namesFromFile, namesFromString, namesFromURL
+ - FIX - For An empty CSV column we must get an empty series.
+ - FIX - Trailing cell separator must not generate an empty series with an empty name
+ - fr.janalyse.series.csv package object contains csv general tools :
+   + align : align a list of Series on the given time model (using sampling of course)
+ - Series relativeSync method added
+ - CSV2Series extract refactoring => now support any kind of Cell and 
+   on the fly sampling depending of the chosen cell type and time period
+   => CSV2Series fromString, fromFile, fromURL are now polymophics, they now requires a Cell Type parameter <: CELL
+ - Series rename(newName:String, newAlias:String) method added
+ - Series rename(newName:String) behavior modified, now alias is set to newName
+ 
+------------------------------------------------------------------
+1.3.0 2012-09-06
+ - "implicit format:CSVFormat" now correctly used
+ - CSVFormat comes with a default implicit format.
+ - CSVFormatHints class removed.
+ - CSVFormat class and usage refactoring
+ - Support for variable columns csv, example with this following csv file :
+      date;             A
+      20-03-2011 02:00; 2
+      20-03-2011 03:00;
+      20-03-2011 04:00; 8
+      date;             A; B; C
+      20-03-2011 05:00; 1; 2; 3
+      20-03-2011 06:00; 2;  ; 5
+      date;             C; D
+      20-03-2011 07:00; 7; 0
+ - apache commons 1.8.4 dependency added (for bzip2 implementation)
+ - gzip, bzip2 compressed csv file now taken into account in fromFile and fromURL methods
+ - some TimeModel refactoring + adding a new TimeModel implementation : TimeModelCustom
+   But would require some refactoring, performance potential problem I think.
+ - package series object added : provides helper functions
+   + align : align some series together on common times they share (using a time normalizer)
+ - now supports any order for series computation with numbers : "10 + s" or  "s + 10"
+   (thanks to an implicit conversion defined in series package objet
+ - more test cases
+ - series now overrides equals & hashCode (series alias field is not taken into acount - alias is a user friendly series name).
+ - series times and values methods return IndexedSeq collection instead of Iterable
+ - scala 2.8.x support removed
+ 
+------------------------------------------------------------------
+1.2.0 2012-08-05
+ - now using sbt 0.12
+ - now using sbteclipse 2.1.0
+ - now using sbt-assembly 0.8.3
+ - now using scalatest 1.8
+ - Series factories enhancements
+ - showLegend boolean added to chartConfig.
+ - Add support for QuoteCell (for stock series processing)
+ - Various Code cleanup and enhancements.
+ - Add date automatic support for google finance historical data (although the API will be shutdown ~ october 2012) 
+ - CSV2Series now supports direct parsing of Quote Series ( CSV2Series.quoteFromURL )
+ - Automatic supports of CSV with all cells in quotes
+ - new tests cases (quotes)
+ - duration based takeRight and dropRight method added
+ - chart classes refactoring
+ - stacked chart type added : StackedChart class
+   => BUT still work in progress as TableXYDataSet implies the same number of cells in each series !!! 
+ - Series sample method now preserves cell type !! (was previously returning a StatCell!!) 
+ - statSample method added to Series to allow sampling using StatCell
+ - toSeries method added to Series to allow cell type conversions
+ - Series count2Rate method renamed to toRate
+
+
+------------------------------------------------------------------
+1.1.1
+ - Exceptions during CSV parsing do not generate failure anymore, it just breaks the parsing loop and print a warning.
+ - Added a new example script: stockquery.scala 
+ - updated for scala 2.9.2 support
+ - scalatest 1.7.2
+
+
+------------------------------------------------------------------
+1.1.0
+ - Statistics : alive added = OpenCell.time - CloseCell.time = series alive period of time
+ - realias() without any argument means take the name as the alias.
+ - added braces to delta, compact, zeroBased 
+ - Chart seriesScales method renamed to scales
+ - Chart new method : colors which returns a map of [Series[Cell], Color]
+ - Added a package object jaseries to define shortcuts to 
+   fr.janalyse.series.CSV2Series, fr.janalyse.series.view.Chart classes and objects
+
+
+------------------------------------------------------------------
+1.0.5
+ - added count2Rate method to Series : Compute the series data rate from current series using optional periodicity (1s by default = 1000L)
+ - updated sbt eclipse plugin to 2.0.0 release
+ - updated sbt assembly plugin to 0.7.3 release
+ - fix a big performance problem with 90 percentile computation in Statistics class
