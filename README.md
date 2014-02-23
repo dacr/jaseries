@@ -90,5 +90,3 @@ The generated series, gives you hitrate each 10 minutes period.
 
 
 
-Use cases can be found on my blog, [http://www.crosson.org/]
-
