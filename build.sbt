@@ -1,6 +1,6 @@
 name := "janalyse-series"
 
-version := "1.6.1-rc2"
+version := "1.6.1"
 
 organization :="fr.janalyse"
 
