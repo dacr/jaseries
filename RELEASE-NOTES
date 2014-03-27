@@ -11,7 +11,7 @@ Crosson David - crosson.david@gmail.com
  - TODO : add ++ 
 
 ------------------------------------------------------------------
-1.6.1 - 2012-xx-yy
+1.6.1 - 2014-03-27
  - cell insertion is now 2.5 faster than before, and 2.5 faster than for Vector
    (using raw builder instead)
  - Performance test enhancements
@@ -25,7 +25,6 @@ Crosson David - crosson.david@gmail.com
       realiasFromName
  - scala             2.10.3
  - jfreechart        1.0.15
- - sbteclipse-plugin 2.3.0
  - sbt-assembly      0.10.0
  - sbt               0.13.0
  - scalatest         1.9.2
