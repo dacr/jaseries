@@ -17,7 +17,7 @@ A standalone packaging, "[http://code.google.com/p/janalyse-series/downloads/det
 **Current release** : **1.6.1** (for scala 2.10)   1.4.0  (for scala 2.9.1, 2.9.2)
 
 **Declare dependency in SBT as follow** :
-```libraryDependencies += "fr.janalyse"   %% "janalyse-series" % "1.6.0" % "compile"```
+```libraryDependencies += "fr.janalyse"   %% "janalyse-series" % "1.6.1" % "compile"```
 
 **Add JAnalyse repository in SBT as follow** :
 ```resolvers += "JAnalyse Repository" at "http://www.janalyse.fr/repository/"```
