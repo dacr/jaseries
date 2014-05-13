@@ -1,6 +1,65 @@
-
 ---------------------------------------------------------------------------
-2013-10-30 / zorglub / java version "1.7.0_40" / OS X 10.9 2.3Ghz Intel Core i7 / 8Go 1600MHz DDR3
+2014-04-13 / zorglub / scala 2.11 / java version "1.7.0_51" / OS X 10.9.2 2.3Ghz Intel Core i7 / 8Go 1600MHz DDR3
+
+[info] PerfSeriesTest:
+[info] - some performances test
+[info]   + Build duration : 19ms - size=1000 
+[info]   + compute duration : 313ms - size=1000 
+[info]   + composition duration : 396ms - size=1000 
+[info]   + oneBig composition duration : 569ms - size=1000 
+[info] - more performances test - 1000000 cells
+[info]   + With Series[CalcCell] :Duration : avg=421ms min=212ms max=712ms all=Vector(712ms, 339ms, 212ms) 
+[info]   + With Series[StatCell] :Duration : avg=201ms min=183ms max=234ms all=Vector(234ms, 187ms, 183ms) 
+[info]   + With Series[AddCell] : Duration : avg=185ms min=178ms max=199ms all=Vector(199ms, 180ms, 178ms) 
+[info]   + With Series[CountCell] : Duration : avg=185ms min=175ms max=204ms all=Vector(204ms, 176ms, 175ms) 
+[info] - basic performance test : 1000000 cells added, period=1
+[info]   + Reference duration (using Series)      : 99ms - reached size=1000000 
+[info]   + Reference duration (using Vector)      : 99ms - reached size=1000000 
+[info] - prepend test
+[info]   + Reference duration (using SERIES)            : 1ms - reached size=1250 (immutable) 
+[info]   + Reference duration (using SERIES)            : 2ms - reached size=2500 (immutable) 
+[info]   + Reference duration (using SERIES)            : 4ms - reached size=5000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 6ms - reached size=10000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 5ms - reached size=20000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 9ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 14ms - reached size=80000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 25ms - reached size=160000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 43ms - reached size=320000 (immutable) 
+[info]   + Reference duration (using scala VECTOR)      : 27ms - reached size=320000 (immutable) 
+[info]   + Reference duration (using scala ARRAYBUFFER) : 9s985ms - reached size=320000 (but mutable, so not fair) 
+[info]   + Reference duration (using java ARRAYLIST)    : 9s886ms - reached size=320000 (but mutable, so not fair) 
+[info] - middle insertion test
+[info]   + Reference duration (using SERIES)            : 6ms - reached size=1250 (immutable) 
+[info]   + Reference duration (using SERIES)            : 22ms - reached size=2500 (immutable) 
+[info]   + Reference duration (using SERIES)            : 92ms - reached size=5000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 400ms - reached size=10000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 1s392ms - reached size=20000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 4s777ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using scala VECTOR)      : 13s253ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using scala ARRAYBUFFER) : 70ms - reached size=40000 (but mutable, so not fair) 
+[info]   + Reference duration (using java ARRAYLIST)    : 59ms - reached size=40000 (but mutable, so not fair) 
+[info] - append test
+[info]   + Reference duration (using SERIES)            : 1ms - reached size=1250 (immutable) 
+[info]   + Reference duration (using SERIES)            : 1ms - reached size=2500 (immutable) 
+[info]   + Reference duration (using SERIES)            : 3ms - reached size=5000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 4ms - reached size=10000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 5ms - reached size=20000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 9ms - reached size=40000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 21ms - reached size=80000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 45ms - reached size=160000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 97ms - reached size=320000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 178ms - reached size=640000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 600ms - reached size=1280000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 656ms - reached size=2560000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 1s52ms - reached size=5120000 (immutable) 
+[info]   + Reference duration (using SERIES)            : 2s527ms - reached size=10240000 (immutable) 
+[info]   + Reference duration (using scala VECTOR)      : 1s631ms - reached size=10240000 (immutable) 
+[info]   + Reference duration (using scala ARRAYBUFFER) : 3s485ms - reached size=10240000 (but mutable, so not fair) 
+[info]   + Reference duration (using java ARRAYLIST)    : 3s329ms - reached size=10240000 (but mutable, so not fair) 
+[info] - csv read perf test
+[info]   + csv parse duration : 3s278ms - size=500000 
+---------------------------------------------------------------------------
+2013-10-30 / zorglub / scala 2.10 / java version "1.7.0_40" / OS X 10.9 2.3Ghz Intel Core i7 / 8Go 1600MHz DDR3
 
 [info] PerfSeriesTest:
 [info] - some performances test
