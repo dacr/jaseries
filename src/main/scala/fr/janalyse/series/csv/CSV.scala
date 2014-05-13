@@ -30,7 +30,7 @@ import java.util.Locale
 import java.net.URL
 import fr.janalyse.series._
 
-import com.typesafe.scalalogging.slf4j.Logging
+import com.typesafe.scalalogging.slf4j.LazyLogging
 
 
 import scala.language.implicitConversions
@@ -134,7 +134,7 @@ case class CSVInputFormat(
   * @author David Crosson
   */
 
-class CSV2Series(source: => Source) extends Logging {
+class CSV2Series(source: => Source) extends LazyLogging {
   // ---------------------------------------------------------------------------
   private val inquotere="""^"([^"]*)"$""".r
   
