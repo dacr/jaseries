@@ -6,9 +6,9 @@ organization :="fr.janalyse"
 
 organizationHomepage := Some(new URL("http://www.janalyse.fr"))
 
-scalaVersion := "2.11.0"
+scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.10.4", "2.11.0")
+crossScalaVersions := Seq("2.10.4", "2.11.1")
 
 scalacOptions ++= Seq( "-deprecation", "-unchecked", "-feature", "-language:implicitConversions")
 
