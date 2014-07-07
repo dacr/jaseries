@@ -1,5 +1,4 @@
 /*
- * Copyright 2011-2012-2013 David Crosson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9,6 +8,7 @@
  * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
+ * Copyright 2011-2012-2013 David Crosson
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -376,8 +376,15 @@ class Series[+C <: Cell](
    * @param toTime
    * @return sub timerange series
    */
-  def take(fromTime: Long, toTime: Long) = new Series[C](name, tm, alias, backend dropWhile { _.time < fromTime } takeWhile { _.time <= toTime })
+  def take(fromTime: Long, toTime: Long):Series[C] = new Series[C](name, tm, alias, backend dropWhile { _.time < fromTime } takeWhile { _.time <= toTime })
 
+  /**
+   * returns a sub-part of the current series, only take cells which belongs to the specified timerange
+   * @param range
+   * @return sub timerange series
+   */
+  def take(range:TimeRange):Series[C] = take(range.from, range.to)
+  
   /**
    * returns a sub-part of the current series, only the first "howlong" time
    * @param howlong how long time to take at the start of the series
@@ -608,7 +615,38 @@ class Series[+C <: Cell](
     first <- headOption
     last <- lastOption
   } yield TimeRange(first.time, last.time)
+  
+  
+  /**
+   * Best value gotten for the given time range size.
+   * The computation can be CPU intensive, take care if the chosen stepper value
+   *   big duration with small steps may be very slow to compute, in particular 
+   *   if your extractor requires sub-series statistics computation 
+   * @param sizeGoal time range size.
+   * @param extract on which subseries characteristics ? Default is the statistics 90 percentile.
+   * @param select which of two best time ranges is the best one. Default is take highest value
+   * @param stepper increment to use between two sub-series. Default is chosen duration / 3
+   */
+  def bestTimeRange(
+      sizeGoal:Duration,
+      extract: (Series[C]) => Double = _.stat.percentile90,
+      compare:(BestTimeRange,BestTimeRange)=>BestTimeRange = (a,b) => if (a.value > b.value) a else b,
+      stepper:(Duration)=> Long = _.value / 3)
+    : Option[BestTimeRange] = {
+    timeRange match {
+      case None => None
+      case Some(tr) if tr.size < sizeGoal.value => None
+      case Some(tr) =>
+        val ref = take(tr)
+        ???
+    }
+  }
 }
+
+
+
+
+
 
 
 

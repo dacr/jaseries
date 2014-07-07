@@ -1,6 +1,4 @@
-#JASeries : scala API for time numerical series operations.#
-
-[![Build Status](https://travis-ci.org/dacr/jaseries.png?branch=master)](https://travis-ci.org/dacr/jaseries)
+#JASeries : scala API for time numerical series operations. [![Build Status](https://travis-ci.org/dacr/jaseries.png?branch=master)](https://travis-ci.org/dacr/jaseries)#
 
 Supports read / write CSV files or strings. Pivot-columns are automatically taken into account. CSV file format is automatically guessed. Chart generation is now supported ! <b> NEW : Performance enhancements & Series is now almost a true scala collection</b>
 

@@ -11,8 +11,16 @@ Crosson David - crosson.david@gmail.com
  - TODO : add ++ 
 
 ------------------------------------------------------------------
+1.6.x - 2014-07-yy work in progress
+ -  def take(range:TimeRange):Series[C]
+ -  def bestTimeRange(
+         sizeGoal:Duration,
+         extract: (Series[C]) => Double,
+         compare:(BestTimeRange,BestTimeRange)=>BestTimeRange,
+         stepper:(Duration)=> Long) : Option[BestTimeRange]
+ 
+------------------------------------------------------------------
 1.6.2 - 2014-05-20
-
  - scala 2.10.4
  - scala 2.11.0 support added
  - scala-logging-slf4j 2.1.2

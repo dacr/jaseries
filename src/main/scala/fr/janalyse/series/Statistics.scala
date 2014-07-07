@@ -36,7 +36,7 @@ case class Statistics(
   min: Double,
   max: Double,
   avg: Double,
-  weightAvg: Double, // Moyenne pondérée par le temps séparant cette cellule de la suivante
+  weightAvg: Double, // timed weighted average. The weight is the time differences between consecutive cells
   sum: Double,
   sd: Double,
   scaleFactor: Double,
