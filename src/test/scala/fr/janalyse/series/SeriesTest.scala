@@ -369,6 +369,25 @@ class SeriesTest  extends FunSuite with ShouldMatchers {
     //info(s4.toString)
   }
   
+  // ---------------------------------------------------------------------------
   
+  test("bestTimeRange tests") {
+	  val sample=Series[CalcCell]("x") <<< List(
+	      1L  -> 10d,
+	      2L  -> 20d,
+	      3L  -> 30d,
+	      4L  -> 50d, 
+	      5L  -> 75d,   // --> 
+	      6L  -> 120d,  // Best time range for higher average (for sizeGoal=3)
+	      7L  -> 75d,   // <--
+	      8L  -> 50d,
+	      9L  -> 30d,
+	      10L -> 20d,
+	      11L -> 10d
+	      )
+	  def greater(x:BestTimeRange, y:BestTimeRange) = if (x.value > y.value) x else y
+	  
+	  sample.bestTimeRange(3, _.stat.avg, greater, _ => 1) should equal(Some(BestTimeRange(90d, TimeRange(5,7))))
+  }  
 }
 

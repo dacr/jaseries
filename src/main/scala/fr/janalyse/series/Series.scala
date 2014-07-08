@@ -392,7 +392,7 @@ class Series[+C <: Cell](
    */
   def take(howlong: Duration) = {
     val to = head.time + howlong.value
-    new Series[C](name, tm, alias, backend takeWhile { _.time <= to })
+    new Series[C](name, tm, alias, backend takeWhile { _.time < to })
   }
 
   /**
@@ -615,40 +615,48 @@ class Series[+C <: Cell](
     first <- headOption
     last <- lastOption
   } yield TimeRange(first.time, last.time)
-  
-  
+
   /**
    * Best value gotten for the given time range size.
    * The computation can be CPU intensive, take care if the chosen stepper value
-   *   big duration with small steps may be very slow to compute, in particular 
-   *   if your extractor requires sub-series statistics computation 
+   *   big duration with small steps may be very slow to compute, in particular
+   *   if your extractor requires sub-series statistics computation
    * @param sizeGoal time range size.
    * @param extract on which subseries characteristics ? Default is the statistics 90 percentile.
    * @param select which of two best time ranges is the best one. Default is take highest value
    * @param stepper increment to use between two sub-series. Default is chosen duration / 3
    */
   def bestTimeRange(
-      sizeGoal:Duration,
-      extract: (Series[C]) => Double = _.stat.percentile90,
-      compare:(BestTimeRange,BestTimeRange)=>BestTimeRange = (a,b) => if (a.value > b.value) a else b,
-      stepper:(Duration)=> Long = _.value / 3)
-    : Option[BestTimeRange] = {
-    timeRange match {
-      case None => None
-      case Some(tr) if tr.size < sizeGoal.value => None
-      case Some(tr) =>
-        val ref = take(tr)
-        ???
+    sizeGoal: Duration,
+    extract: (Series[C]) => Double = _.stat.percentile90,
+    compare: (BestTimeRange, BestTimeRange) => BestTimeRange = (a, b) => if (a.value > b.value) a else b,
+    stepper: (Duration) => Long = _.value / 3): Option[BestTimeRange] = {
+    
+    @annotation.tailrec
+    def go(remain: Series[C], bestUntilNow: Option[BestTimeRange]): Option[BestTimeRange] = {
+      println(s"$bestUntilNow   $remain")
+      val remainTimeRange = remain.timeRange 
+      if (remainTimeRange.isEmpty || remainTimeRange.get.size < sizeGoal.value) bestUntilNow
+      else {
+        val selected = remain.take(sizeGoal)
+        println(s"   -----> $selected")
+        val best = for {
+          selectedRange <- selected.timeRange
+        } yield {
+          val mayBeTheNewBest = BestTimeRange(extract(selected), selectedRange)
+          if (bestUntilNow.isEmpty) mayBeTheNewBest 
+          else compare(mayBeTheNewBest, bestUntilNow.get)
+        }
+        go(remain.drop(stepper(sizeGoal)), best)
+      }
     }
+
+    go(this, None)
+
   }
+  
+  
 }
-
-
-
-
-
-
-
 
 
 

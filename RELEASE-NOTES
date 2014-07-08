@@ -18,6 +18,10 @@ Crosson David - crosson.david@gmail.com
          extract: (Series[C]) => Double,
          compare:(BestTimeRange,BestTimeRange)=>BestTimeRange,
          stepper:(Duration)=> Long) : Option[BestTimeRange]
+    first implementation (basic one) is ready
+ - def take(howlong: Duration) 
+   implementation fix, <= to <  
+ - bestTimeRange test case added
  
 ------------------------------------------------------------------
 1.6.2 - 2014-05-20
