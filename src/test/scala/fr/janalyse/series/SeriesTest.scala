@@ -387,7 +387,7 @@ class SeriesTest  extends FunSuite with ShouldMatchers {
 	      )
 	  def greater(x:BestTimeRange, y:BestTimeRange) = if (x.value > y.value) x else y
 	  
-	  sample.bestTimeRange(3, _.stat.avg, greater, _ => 1) should equal(Some(BestTimeRange(90d, TimeRange(5,7))))
+	  sample.bestTimeRange(3, _.stat.avg, greater, (_,_) => 1) should equal(Some(BestTimeRange(90d, TimeRange(5,7))))
   }  
 }
 

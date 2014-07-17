@@ -624,22 +624,25 @@ class Series[+C <: Cell](
    * @param sizeGoal time range size.
    * @param extract on which subseries characteristics ? Default is the statistics 90 percentile.
    * @param select which of two best time ranges is the best one. Default is take highest value
-   * @param stepper increment to use between two sub-series. Default is chosen duration / 3
+   * @param stepper increment to use between two sub-series. Default is chosen duration sizeGoal / 3
+   *                stepper is a function that takes next step time, and given sizeGoal, to allow
+   *                adaptative calculation, for example to ignore night data.
+   *         
    */
   def bestTimeRange(
     sizeGoal: Duration,
     extract: (Series[C]) => Double = _.stat.percentile90,
     compare: (BestTimeRange, BestTimeRange) => BestTimeRange = (a, b) => if (a.value > b.value) a else b,
-    stepper: (Duration) => Long = _.value / 3): Option[BestTimeRange] = {
+    stepper: (Long,Duration) => Long = (time, goal) =>goal.value / 3): Option[BestTimeRange] = {
     
     @annotation.tailrec
     def go(remain: Series[C], bestUntilNow: Option[BestTimeRange]): Option[BestTimeRange] = {
-      println(s"$bestUntilNow   $remain")
+      //println(s"$bestUntilNow   $remain")
       val remainTimeRange = remain.timeRange 
       if (remainTimeRange.isEmpty || remainTimeRange.get.size < sizeGoal.value) bestUntilNow
       else {
         val selected = remain.take(sizeGoal)
-        println(s"   -----> $selected")
+        //println(s"   -----> $selected")
         val best = for {
           selectedRange <- selected.timeRange
         } yield {
@@ -647,7 +650,7 @@ class Series[+C <: Cell](
           if (bestUntilNow.isEmpty) mayBeTheNewBest 
           else compare(mayBeTheNewBest, bestUntilNow.get)
         }
-        go(remain.drop(stepper(sizeGoal)), best)
+        go(remain.drop(stepper(remain.head.time, sizeGoal)), best)
       }
     }
 
