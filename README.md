@@ -38,7 +38,7 @@ val closeSeries = allSeries("Close")
 println("GOOGLE stock summary")
 println("Higher : "+closeSeries.max)
 println("Lowest : "+closeSeries.min)
-println("Week Trend : "+closeSeries.stat.linearApproximation.daySope*7)
+println("Week Trend : "+closeSeries.stat.linearApproximation.daySlope*7)
 println("Latest : "+closeSeries.last)
 ```
 Which gives :
