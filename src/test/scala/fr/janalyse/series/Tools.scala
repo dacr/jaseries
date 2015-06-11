@@ -1,4 +1,4 @@
-package fr.janalyse.tools
+package fr.janalyse.series
 
 import fr.janalyse.unittools._
 

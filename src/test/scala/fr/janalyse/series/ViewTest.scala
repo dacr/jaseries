@@ -17,14 +17,12 @@
 package fr.janalyse.series
 
 import java.io.File
-import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.ShouldMatchers
-import org.scalatest.junit.JUnitRunner
 import scala.collection.JavaConversions._
 import fr.janalyse.series._
 import fr.janalyse.series.view._
-import fr.janalyse.tools.DurationTools._
+import DurationTools._
 import scala.swing.Frame
 import java.awt.FlowLayout
 import scala.swing.FlowPanel
@@ -39,7 +37,6 @@ import fr.janalyse.unittools._
   * Chart View Test cases
   * @author David Crosson
   */
-@RunWith(classOf[JUnitRunner])
 class ViewTest extends FunSuite with ShouldMatchers {
 
   // ---------------------------------------------------------------------------

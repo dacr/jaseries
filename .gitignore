@@ -11,4 +11,4 @@ target/
 images/
 *.png
 nohup.out
-
+*.jpg

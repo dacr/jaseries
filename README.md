@@ -14,10 +14,10 @@ A standalone packaging, "[http://code.google.com/p/janalyse-series/downloads/det
 
 [Use cases can be found on my blog](http://www.crosson.org/)
 
-**Current release** : **1.6.1** (for scala 2.10)   1.4.0  (for scala 2.9.1, 2.9.2)
+**Current release** : **1.6.3** (for scala 2.10, 2.11)   1.4.0  (for scala 2.9)
 
 **Declare dependency in SBT as follow** :
-```libraryDependencies += "fr.janalyse"   %% "janalyse-series" % "1.6.1" % "compile"```
+```libraryDependencies += "fr.janalyse"   %% "janalyse-series" % "1.6.3" % "compile"```
 
 **Add JAnalyse repository in SBT as follow** :
 ```resolvers += "JAnalyse Repository" at "http://www.janalyse.fr/repository/"```
