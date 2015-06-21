@@ -1,14 +1,14 @@
 name := "janalyse-series"
 
-version := "1.6.3-alpha"
+version := "1.6.3-SNAPSHOT"
 
 organization :="fr.janalyse"
 
 organizationHomepage := Some(new URL("http://www.janalyse.fr"))
 
-scalaVersion := "2.10.4"
+scalaVersion := "2.11.6"
 
-crossScalaVersions := Seq("2.10.4", "2.11.1")
+crossScalaVersions := Seq("2.10.5", "2.11.6")
 
 scalacOptions ++= Seq( "-deprecation", "-unchecked", "-feature", "-language:implicitConversions")
 
@@ -20,9 +20,9 @@ libraryDependencies := {
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((2, scalaMajor)) if scalaMajor >= 11 =>
       libraryDependencies.value ++ Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
-        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.1",
-        "org.scala-lang.modules" %% "scala-swing" % "1.0.1")
+        "org.scala-lang.modules" %% "scala-xml" % "1.0.+",
+        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.+",
+        "org.scala-lang.modules" %% "scala-swing" % "1.0.+")
     case _ =>
       // or just libraryDependencies.value if you don't depend on scala-swing
       libraryDependencies.value :+ "org.scala-lang" % "scala-swing" % scalaVersion.value
@@ -31,11 +31,11 @@ libraryDependencies := {
 
 
 libraryDependencies ++= Seq(
-    "fr.janalyse"        %% "unittools"          % "0.2.4"
-   ,"org.apache.commons" %  "commons-compress"   % "1.5"
+    "fr.janalyse"        %% "unittools"          % "0.2.+"
+   ,"org.apache.commons" %  "commons-compress"   % "1.7"
    ,"org.jfree"          %  "jfreechart"         % "1.0.15"
-   ,"com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2"
-   ,"org.scalatest"      %% "scalatest"          % "2.1.5"  % "test"
+   ,"com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.+"
+   ,"org.scalatest"      %% "scalatest"          % "2.2.+"  % "test"
    ,"junit"              %  "junit"              % "4.10"   % "test"
 )
 
