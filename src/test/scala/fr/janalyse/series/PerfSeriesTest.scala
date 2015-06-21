@@ -17,14 +17,12 @@
 package fr.janalyse.series
 
 import java.io.File
-import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.ShouldMatchers
-import org.scalatest.junit.JUnitRunner
 import scala.collection.JavaConversions._
 import fr.janalyse.series._
 import fr.janalyse.unittools._
-import fr.janalyse.tools.DurationTools._
+import DurationTools._
 
 import fr.janalyse.series.csv._
 
@@ -32,7 +30,6 @@ import fr.janalyse.series.csv._
   * Test cases
   * @author David Crosson
   */
-@RunWith(classOf[JUnitRunner])
 class PerfSeriesTest  extends FunSuite with ShouldMatchers {
   // ---------------------------------------------------------------------------  
   test("some performances test") {

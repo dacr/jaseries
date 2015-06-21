@@ -30,9 +30,6 @@ import java.util.Locale
 import java.net.URL
 import fr.janalyse.series._
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
-
-
 import scala.language.implicitConversions
 
 
