@@ -12,9 +12,6 @@ crossScalaVersions := Seq("2.10.5", "2.11.7")
 
 scalacOptions ++= Seq( "-deprecation", "-unchecked", "-feature", "-language:implicitConversions")
 
-//libraryDependencies <++=  scalaVersion { sv =>
-//   Seq("org.scala-lang" % "scala-swing" % sv)
-//}
 
 libraryDependencies := {
   CrossVersion.partialVersion(scalaVersion.value) match {
@@ -37,4 +34,6 @@ libraryDependencies ++= Seq(
    ,"org.slf4j"          % "slf4j-api"           % "1.7.+"
    ,"org.scalatest"      %% "scalatest"          % "2.2.+"  % "test"
 )
+
+resolvers += "JAnalyse Repository requirements" at "http://www.janalyse.fr/repository/"
 
