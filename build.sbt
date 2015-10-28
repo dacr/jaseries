@@ -30,7 +30,7 @@ libraryDependencies := {
 libraryDependencies ++= Seq(
     "fr.janalyse"        %% "unittools"          % "0.2.+"
    ,"org.apache.commons" %  "commons-compress"   % "1.9"
-   ,"org.jfree"          %  "jfreechart"         % "1.0.15"
+   ,"org.jfree"          %  "jfreechart"         % "1.0.19"
    ,"org.slf4j"          % "slf4j-api"           % "1.7.+"
    ,"org.scalatest"      %% "scalatest"          % "2.2.+"  % "test"
 )

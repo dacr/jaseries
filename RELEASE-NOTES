@@ -11,7 +11,7 @@ Crosson David - crosson.david@gmail.com
  - TODO : add ++ 
 
 ------------------------------------------------------------------
-1.6.3 - 2015-06-11 work in progress
+1.6.3 - 2015-10-28 work in progress
  -  def take(range:TimeRange):Series[C]
  -  def bestTimeRange(
          sizeGoal:Duration,
@@ -22,8 +22,9 @@ Crosson David - crosson.david@gmail.com
  - def take(howlong: Duration) 
    implementation fix, <= to <  
  - bestTimeRange test case added
- - built with scala 2.10.5 & scala 2.11.6
+ - built with scala 2.10.5 & scala 2.11.7
  - switch to sl4j api for logging
+ - jfreechart updated to 1.0.19 
  
 ------------------------------------------------------------------
 1.6.2 - 2014-05-20
