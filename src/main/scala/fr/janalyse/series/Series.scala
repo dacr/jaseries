@@ -146,7 +146,8 @@ class Series[+C <: Cell](
     if (index < 0 || index >= length) throw new IndexOutOfBoundsException
     backend(index)
   }
-  override def length = backend.length
+  override def length = backend.size
+  override def size = backend.size
   override def last = backend.last //backend(length-1)
   override def head = backend.head
   override def headOption = backend.headOption
