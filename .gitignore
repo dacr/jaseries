@@ -12,3 +12,7 @@ images/
 *.png
 nohup.out
 *.jpg
+/bin/
+.Rhistory
+.idea
+*.iml

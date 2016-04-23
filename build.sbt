@@ -6,9 +6,9 @@ organization :="fr.janalyse"
 
 organizationHomepage := Some(new URL("http://www.janalyse.fr"))
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
-crossScalaVersions := Seq("2.10.5", "2.11.7")
+crossScalaVersions := Seq("2.10.6", "2.11.8")
 
 scalacOptions ++= Seq( "-deprecation", "-unchecked", "-feature", "-language:implicitConversions")
 
@@ -28,11 +28,11 @@ libraryDependencies := {
 
 
 libraryDependencies ++= Seq(
-    "fr.janalyse"        %% "unittools"          % "0.2.+"
-   ,"org.apache.commons" %  "commons-compress"   % "1.9"
+    "fr.janalyse"        %% "unittools"          % "0.2.7-SNAPSHOT"
+   ,"org.apache.commons" %  "commons-compress"   % "1.11"
    ,"org.jfree"          %  "jfreechart"         % "1.0.19"
-   ,"org.slf4j"          % "slf4j-api"           % "1.7.+"
-   ,"org.scalatest"      %% "scalatest"          % "2.2.+"  % "test"
+   ,"org.slf4j"          % "slf4j-api"           % "1.7.21"
+   ,"org.scalatest"      %% "scalatest"          % "2.2.6"  % "test"
 )
 
 resolvers += "JAnalyse Repository requirements" at "http://www.janalyse.fr/repository/"
