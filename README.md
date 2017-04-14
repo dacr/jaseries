@@ -1,4 +1,4 @@
-#JASeries : scala API for time numerical series operations. [![Build Status](https://travis-ci.org/dacr/jaseries.png?branch=master)](https://travis-ci.org/dacr/jaseries)#
+# JASeries : scala API for time numerical series operations. [![Build Status](https://travis-ci.org/dacr/jaseries.png?branch=master)](https://travis-ci.org/dacr/jaseries)
 
 Supports read / write CSV files or strings. Pivot-columns are automatically taken into account. CSV file format is automatically guessed. Chart generation is now supported ! <b> NEW : Performance enhancements & Series is now almost a true scala collection</b>
 
@@ -22,9 +22,9 @@ A standalone packaging, "[http://code.google.com/p/janalyse-series/downloads/det
 **Add JAnalyse repository in SBT as follow** :
 ```resolvers += "JAnalyse Repository" at "http://www.janalyse.fr/repository/"```
 
-##Examples##
+## Examples
 
-###Google stock quote trend###
+### Google stock quote trend
 ```scala
 #!/bin/sh
 exec java -jar jaseries.jar -nocompdaemon -usejavacp -savecompiled "$0" "$@"
@@ -52,7 +52,7 @@ Latest : (11-03-25 00:00:00 -> 579,74)
 ```
 
 
-###Google stock quote trend chart generation###
+### Google stock quote trend chart generation
 
 ```scala
 #!/bin/sh
@@ -72,7 +72,7 @@ which gives :
 <img src="http://dnld.crosson.org/googleStockTrend.jpg"/>
 
 
-###Compute hitrate series from hitcount series###
+### Compute hitrate series from hitcount series
 
 ```
 import fr.janalyse.series._

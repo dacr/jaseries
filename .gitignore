@@ -16,3 +16,7 @@ nohup.out
 .Rhistory
 .idea
 *.iml
+.DS_Store
+.cache-main
+.cache-tests
+.ensime
