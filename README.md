@@ -1,4 +1,5 @@
-# JASeries : scala API for time numerical series operations. [![Build Status](https://travis-ci.org/dacr/jaseries.png?branch=master)](https://travis-ci.org/dacr/jaseries)
+# JASeries : scala API for time numerical series operations.  
+[![Build Status][travisImg]][travisLink] [![License][licenseImg]][licenseLink] [![Codacy][codacyImg]][codacyLink] [![codecov][codecovImg]][codecovLink]
 
 Supports read / write CSV files or strings. Pivot-columns are automatically taken into account. CSV file format is automatically guessed. Chart generation is now supported ! <b> NEW : Performance enhancements & Series is now almost a true scala collection</b>
 
@@ -14,13 +15,19 @@ A standalone packaging, "[http://code.google.com/p/janalyse-series/downloads/det
 
 [Use cases can be found on my blog](http://www.crosson.org/)
 
-**Current release** : **1.6.3** (for scala 2.10, 2.11)   1.4.0  (for scala 2.9)
 
-**Declare dependency in SBT as follow** :
-```libraryDependencies += "fr.janalyse"   %% "janalyse-series" % "1.6.3" % "compile"```
+In your build.sbt, add this (available in maven central) :
+```
+libraryDependencies += "fr.janalyse"   %% "janalyse-series" % version
+```
+_(starting from 0.7, java 8 bytecodes are used, and scala 2.10, 2.11 and 2.12 are supported)_
 
-**Add JAnalyse repository in SBT as follow** :
-```resolvers += "JAnalyse Repository" at "http://www.janalyse.fr/repository/"```
+Latest `version`: [![Maven][mavenImg]][mavenLink] [![Scaladex][scaladexImg]][scaladexLink]
+
+
+**Old releases** : `resolvers += "JAnalyse Repository" at "http://www.janalyse.fr/repository/"`
++ **1.6.3** : for scala 2.10 and 2.11, java 6 bytecodes
++ **1.4.0** : for scala 2.9.1, 2.9.2, java 5 bytecodes
 
 ## Examples
 
@@ -88,5 +95,29 @@ CSV2Series.toFile(hitrate, "hitrate.csv")
 ```
 The generated series, gives you hitrate each 10 minutes period.
 
+
+
+[mavenImg]: https://img.shields.io/maven-central/v/fr.janalyse/janalyse-series_2.12.svg
+[mavenImg2]: https://maven-badges.herokuapp.com/maven-central/fr.janalyse/janalyse-series_2.12/badge.svg
+[mavenLink]: https://search.maven.org/#search%7Cga%7C1%7Cfr.janalyse.janalyse-series
+
+[scaladexImg]: https://index.scala-lang.org/dacr/jaseries/janalyse-series/latest.svg
+[scaladexLink]: https://index.scala-lang.org/dacr/jaseries
+
+[licenseImg]: https://img.shields.io/github/license/dacr/jaseries.svg
+[licenseImg2]: https://img.shields.io/:license-apache2-blue.svg
+[licenseLink]: LICENSE
+
+[codacyImg]: https://img.shields.io/codacy/9ddd9dcff4f742fab9b49dba62e36927.svg
+[codacyImg2]: https://api.codacy.com/project/badge/grade/9ddd9dcff4f742fab9b49dba62e36927
+[codacyLink]: https://www.codacy.com/app/dacr/jaseries/dashboard
+
+[codecovImg]: https://img.shields.io/codecov/c/github/dacr/jaseries/master.svg
+[codecovImg2]: https://codecov.io/github/dacr/jaseries/coverage.svg?branch=master
+[codecovLink]: http://codecov.io/github/dacr/jaseries?branch=master
+
+[travisImg]: https://img.shields.io/travis/dacr/jaseries.svg
+[travisImg2]: https://travis-ci.org/dacr/jaseries.png?branch=master
+[travisLink]:https://travis-ci.org/dacr/jaseries
 
 
