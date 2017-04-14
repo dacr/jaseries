@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2014 David Crosson
+ * Copyright 2011-2017 David Crosson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package fr.janalyse.series
 
 import java.io.File
 import org.scalatest.FunSuite
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers._
 import scala.collection.JavaConversions._
 import fr.janalyse.series._
 import fr.janalyse.unittools._
@@ -30,7 +30,7 @@ import fr.janalyse.series.csv._
   * Test cases
   * @author David Crosson
   */
-class CSVTest  extends FunSuite with ShouldMatchers {
+class CSVTest  extends FunSuite {
 
   // ---------------------------------------------------------------------------
   
