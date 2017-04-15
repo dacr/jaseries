@@ -1,5 +1,5 @@
 name := "janalyse-series"
-version := "1.7.0-SNAPSHOT"
+version := "1.7.1-SNAPSHOT"
 
 organization :="fr.janalyse"
 homepage := Some(new URL("https://github.com/dacr/jaseries"))

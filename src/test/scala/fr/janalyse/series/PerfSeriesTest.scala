@@ -32,7 +32,7 @@ import fr.janalyse.series.csv._
   */
 class PerfSeriesTest  extends FunSuite {
   // ---------------------------------------------------------------------------  
-  test("some performances test") {
+  ignore("some performances test") {
     var x = Series[CalcCell]("X", "5s")
 
     val (buildDuration, _) = durationAsDesc { (1 to 1000) foreach {i => x<<=CalcCell(i*10,i)} }
@@ -51,7 +51,7 @@ class PerfSeriesTest  extends FunSuite {
   
   // ---------------------------------------------------------------------------
   val t1howmany=1000000L
-  test(s"more performances test - $t1howmany cells") {
+  ignore(s"more performances test - $t1howmany cells") {
     val i0 = howlong() {
       var series = Series[CalcCell]("X", 1000L)
       (1L to t1howmany) foreach {t=> series <<=  t -> 1d}
@@ -79,7 +79,7 @@ class PerfSeriesTest  extends FunSuite {
 
   // ---------------------------------------------------------------------------
   val t2howmany=1000000
-  test(s"basic performance test : $t2howmany cells added, period=1") {
+  ignore(s"basic performance test : $t2howmany cells added, period=1") {
     
     var x = Series[CalcCell]("X")
     val (buildDuration, _) = durationAsDesc { (1 to t2howmany) foreach {i => x<<=CalcCell(i*10,i)} }
@@ -143,7 +143,7 @@ class PerfSeriesTest  extends FunSuite {
   }
   
   // ---------------------------------------------------------------------------
-  test(s"prepend test") {
+  ignore(s"prepend test") {
     //val testValues = mydoubler.take(14)
     val testValues = mydoubler.take(9)
     genericIntensiveTest(testValues) {
@@ -153,7 +153,7 @@ class PerfSeriesTest  extends FunSuite {
             (v, i) => v.add(0, CalcCell(i,i)) }
   }
   // ---------------------------------------------------------------------------
-  test(s"middle insertion test") {
+  ignore(s"middle insertion test") {
     // smaller, because of complexity and time increase too fast
     //val testValues = mydoubler.take(6)
     val testValues = mydoubler.take(6)
@@ -165,7 +165,7 @@ class PerfSeriesTest  extends FunSuite {
             (v, i) => v.add(i/2, CalcCell(i,i)) }
   }  
   // ---------------------------------------------------------------------------
-  test(s"append test") {
+  ignore(s"append test") {
     //val testValues = mydoubler.take(14)
     val testValues = mydoubler.take(14)
     genericIntensiveTest(testValues) { 
@@ -176,7 +176,7 @@ class PerfSeriesTest  extends FunSuite {
         }
   }
   // ---------------------------------------------------------------------------
-  test("csv read perf test") {
+  ignore("csv read perf test") {
     def lgen:Stream[String] = "2011/03/20 04:00:00;10; 9; 8"#::lgen 
     def csvgen = "DateTime;A; B; C"#::lgen
     val howmany = 500000
